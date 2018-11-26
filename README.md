@@ -1,0 +1,2 @@
+# Leetcode
+Notes of coding
