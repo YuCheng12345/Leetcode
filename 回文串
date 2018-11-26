@@ -1,4 +1,5 @@
-https://www.nowcoder.com/questionTerminal/28c1dc06bc9b4afd957b01acdf046e69
+题目：https://www.nowcoder.com/questionTerminal/28c1dc06bc9b4afd957b01acdf046e69
+原理：http://www.cnblogs.com/grenet/archive/2010/06/03/1750454.html
 
 提到回文串，自然要利用回文串的特点，想到将源字符串逆转后，“回文串”（不一定连续）相当于顺序没变
 求原字符串和其反串的最大公共子序列（不是子串，因为可以不连续）的长度（使用动态规划很容易求得），
