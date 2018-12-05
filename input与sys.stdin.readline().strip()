@@ -1,3 +1,0 @@
-https://www.nowcoder.com/practice/119bcca3befb405fbe58abe9c532eb29?tpId=37&tqId=21240&rp=0&ru=/ta/huawei&qru=/ta/huawei/question-ranking
-这道题将输入sys.stdin.readline().strip()改为input就可以了，原来是说算法复杂度过大，运行超时，也是一脸懵逼！
-
