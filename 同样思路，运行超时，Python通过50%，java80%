@@ -1,0 +1,64 @@
+https://www.nowcoder.com/questionTerminal/1aeba6ba677949249aba82d81edc3fea
+
+同样的写法，运行超时:您的程序未能在规定时间内运行结束，请检查是否循环有错或算法复杂度过大。
+Python的case通过率为50%，java的case通过率为80%。
+Python代码：
+n = int(input())
+nums = list(map(int, input().split()))
+Max=0
+
+for i in range(n):
+	l, r = i, i
+	flag_l, flag_r = 0, 0
+	Sum = nums[i]
+	while True:
+		if l-1>=0 and nums[l-1]>=nums[i]:
+			l-=1
+			Sum+=nums[l]
+		else:
+			flag_l=1
+		if r+1<n and nums[r+1]>=nums[i]:
+			r+=1
+			Sum+=nums[r]
+		else:
+			flag_r=1
+		if flag_l==1 and flag_r==1:
+			break
+	Max = max(Max,nums[i]*Sum)
+print(Max)
+
+java代码：
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] nums = new int[n];
+        for(int i=0;i<n;i++){
+            nums[i]=in.nextInt();
+        }
+        int Max = 0;
+        for(int i=0;i<n;i++){
+            int l = i;
+            int r = i;
+            int flag_l = 0;
+            int flag_r = 0;
+            int Sum = nums[i];
+
+            while(true){
+                if(l-1>=0 && nums[l-1]>=nums[i]){
+                    l--;
+                    Sum+=nums[l];
+                }
+                else{flag_l=1;}
+                if(r+1<n && nums[r+1]>=nums[i]){
+                    r++;
+                    Sum+=nums[r];
+                }
+                else{flag_r=1;}
+                if(flag_l==1 && flag_r==1){break;}
+            }
+            Max = Math.max(Max,nums[i]*Sum);
+        }
+        System.out.println(Max);
+    }
+}
