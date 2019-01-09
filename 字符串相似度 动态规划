@@ -1,0 +1,58 @@
+题目：https://www.nowcoder.com/practice/f549ee08ddd84b8485a4fa9aefaf4a38?tpId=37&tqId=21302&tPage=4&rp=&ru=/ta/huawei&qru=/ta/huawei/question-ranking
+
+动态规划，可以和回文串的那个思路一起看（http://www.cnblogs.com/grenet/archive/2010/06/03/1750454.html）
+
+公式
+    跟“最长公共子序列”一样，我们采用一个二维数组来保存字符串X和Y当前的位置的最小编辑距离。
+现有两个序列X={x1,x2,x3，...xi}，Y={y1,y2,y3，....，yi}，
+设一个C[i,j]: 保存Xi与Yj的当前最小的LD。
+①： 当 Xi = Yi 时，则C[i,j]=C[i-1,j-1]；
+②：当 Xi != Yi 时， 则C[i,j]=Min{C[i-1,j-1],C[i-1,j],C[i,j-1]}；
+最终我们的C[i,j]一直保存着最小的LD。
+
+代码：
+import java.util.*;
+
+public class Main {
+    public static  String  calculateStringDistance(String eA, String eB){
+        int[][] dif = new int[eA.length()+1][eB.length()+1];
+        for(int i=0;i<=eA.length();i++){
+            dif[i][0]=i;
+        }
+        for(int i=0;i<=eB.length();i++){
+            dif[0][i]=i;
+        }
+        int temp=0;
+        for(int i=1;i<=eA.length();i++){
+            for(int j=1;j<=eB.length();j++){
+                if(eA.charAt(i-1)==eB.charAt(j-1)){
+                    temp=0;
+                }else{
+                    temp=1;
+                }
+                dif[i][j]=min(dif[i-1][j-1]+temp,dif[i][j-1]+1,dif[i-1][j]+1);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        dif[eA.length()][eB.length()]+=1;
+        sb.append(1+"/"+dif[eA.length()][eB.length()]);
+        return sb.toString();
+    }
+    public static int  min(int a,int b,int c){
+        int i = a<b?a:b;
+        return i<c?i:c;
+    }
+    public static void main(String[] args) {
+
+
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            String str1 = in.nextLine();
+            String str2 = in.nextLine();
+
+            System.out.println(calculateStringDistance(str1,str2));
+
+        }
+    }
+}
+
