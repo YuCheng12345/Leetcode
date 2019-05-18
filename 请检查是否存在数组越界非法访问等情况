@@ -15,3 +15,16 @@ case通过率为0.00%
   asdfas
   werasdfaswer--------->两行输入
   就可以了。
+
+
+
+3、可能是多组输入的问题
+当代码中写为
+Scanner in = new Scanner(System.in);
+while(in.hasNext()) {
+。。。
+}
+出现“请检查是否存在数组越界非法访问等情况
+case通过率为81.45%”
+
+把while()扔掉，就行。
